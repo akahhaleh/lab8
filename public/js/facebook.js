@@ -16,3 +16,16 @@ function statusChangeCallback(response) {
     FB.api('/me?fields=name,first_name,picture.width(480)', changeUser);
   }
 }
+
+function changeUser(response){
+  console.log(response);
+  $(".facebookLogin").hide();
+  console.log(response['name']);
+  document.getElementById('name').innerHTML = response['name'];
+  var pictureObject = response['picture'];
+  var data = pictureObject['data'];
+  var url = data['url'];
+  console.log(url);
+  document.getElementById("photo").src = url;
+
+}
